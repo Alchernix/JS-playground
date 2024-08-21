@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="RPS.css">
+    <title>RPS</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="main">
+            <div class="conputer-area">
+                <div class="head">
+                    <p class="bold">Computer</p>
+                    <p id="computer-scoreboard">0</p>
+                </div>
+                <img id="conputer-hand" class="hand-img" src="images/paper-c.png">
+            </div>
+            <img class="versus-img" src="images/versus.png">
+            <div class="you-area">
+                <div class="head">
+                    <p class="bold">You</p>
+                    <p id="your-scoreboard">0</p>
+                </div>
+                <img id="your-hand" class="hand-img" src="images/paper-y.png">
+            </div>
+        </div>
+        <div class="controller" id="controller">
+            <button id="scissor" class="icon"></button>
+            <button id="rock" class="icon"></button>
+            <button id="paper" class="icon"></button>
+        </div>
+    </div>
+    <div class="white-bg" id="white-bg"></div>
+    <div class="result" id="result">
+        <p class="result-text" id="result-text">당신이 이겼습니다!</p>
+        <button class="reset-btn" id="reset-btn">다시하기</button>
+        <a class="main-btn" href="../index.html">메인 화면으로</a>
+    </div>
+    <script src="RPS.js"></script>
+</body>
+
+</html>

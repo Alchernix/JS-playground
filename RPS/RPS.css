@@ -1,0 +1,191 @@
+body,
+html {
+    margin: 0;
+    font-size: 32px;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+}
+
+p {
+    margin: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    /* margin: 70px 50px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* 게임 화면 */
+.main {
+    width: 1100px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head {
+    border-bottom: 3px solid whitesmoke;
+}
+
+.hand-img {
+    width: 400px;
+    /* min-width: 400px;
+    min-height: 400px; */
+}
+
+.conputer-area,
+.you-area {
+    background-color: white;
+    border-radius: 30px;
+}
+
+.versus-img {
+    width: 100px;
+}
+
+/* 애니메이션 */
+.transform1 {
+    transition: transform ease 0.7s;
+    transform: rotate(45deg)
+}
+
+.transform2 {
+    transition: transform ease 0.3s;
+    transform: rotate(0deg)
+}
+
+.transform3 {
+    transition: transform ease 0.7s;
+    transform: rotate(-45deg)
+}
+
+/* 선택지 */
+.controller {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    border: 3px solid black;
+    padding: 6px;
+}
+
+#scissor {
+    background-image: url("images/scissor-y.png");
+    background-size: cover;
+}
+
+#rock {
+    background-image: url("images/rock-y.png");
+    background-size: cover;
+}
+
+#paper {
+    background-image: url("images/paper-y.png");
+    background-size: cover;
+}
+
+/* 결과창 */
+.white-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    opacity: 70%;
+    display: none;
+}
+
+.result {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.result-text {
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.reset-btn {
+    bottom: 35vh;
+    border: none;
+}
+
+.main-btn {
+    text-decoration: none;
+}
+
+.reset-btn,
+.main-btn {
+    color: black;
+    font-size: 28px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* 모바일 */
+@media screen and (max-width: 1100px) {
+
+    html,
+    body {
+        font-size: 24px;
+    }
+
+
+    .main {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hand-img {
+        width: 200px;
+        vertical-align: middle;
+    }
+
+    .versus-img {
+        display: none;
+    }
+
+    .conputer-area,
+    .you-area {
+        width: 50%;
+    }
+
+    .icon {
+        width: 90px;
+        height: 90px;
+    }
+
+    .controller {
+        width: 70%;
+    }
+}
