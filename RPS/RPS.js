@@ -4,9 +4,10 @@ const controller = document.getElementById('controller')
 const computerScoreboard = document.getElementById('computer-scoreboard')
 const yourScoreboard = document.getElementById('your-scoreboard')
 const resetBtn = document.getElementById('reset-btn')
+const versus = document.getElementById('versus')
 let computerScore = 0
 let yourScore = 0
-let isBtnsActive = 1
+let isBtnsActive = true
 
 controller.addEventListener('click', function (e) {
     if (e.target.classList.contains('icon') && isBtnsActive) {
@@ -19,7 +20,9 @@ controller.addEventListener('click', function (e) {
     }
 })
 
-resetBtn.addEventListener('click', function () {
+resetBtn.addEventListener('click', reset)
+
+function reset() {
     computerScore = 0
     yourScore = 0
     computerScoreboard.textContent = computerScore
@@ -28,7 +31,13 @@ resetBtn.addEventListener('click', function () {
     document.getElementById('white-bg').style.display = 'none'
     document.getElementById('result').style.display = 'none'
     document.body.style.backgroundColor = 'whitesmoke'
-})
+    yourHand.setAttribute('src', `images/paper-y.png`)
+    computerHand.setAttribute('src', `images/paper-c.png`)
+    versus.innerHTML = `<img class="versus-img" src="images/versus.png"></img>`
+    if (window.matchMedia('(max-width: 1100px').matches) {
+        versus.innerHTML = `<p class="bold">VS</p>`
+    }
+}
 
 function getComputerMove() {
     let conputerMove = ''
@@ -44,7 +53,7 @@ function getComputerMove() {
 }
 
 function renderHand(move, player) {
-    isBtnsActive = 0
+    isBtnsActive = false
     if (player === 'y') {
         yourHand.classList.add('transform1')
         setTimeout(function () {
@@ -77,17 +86,20 @@ function calcScore(yourMove, computerMove) {
         yourScore += 1
         yourScoreboard.textContent = yourScore
         document.body.style.backgroundColor = '#CAFFBF'
+        showResult('win')
     } else if ((yourMove === 'scissor' && computerMove === 'rock') || (yourMove === "rock" && computerMove === 'paper') || (yourMove === 'paper' && computerMove === 'scissor')) {
         computerScore += 1
         computerScoreboard.textContent = computerScore
         document.body.style.backgroundColor = '#FFADAD'
+        showResult('lose')
     } else {
         document.body.style.backgroundColor = '#FDFFB6'
+        showResult('draw')
     }
 }
 
 function decideWinner() {
-    isBtnsActive = 1
+    isBtnsActive = true
     if (yourScore === 2) {
         document.getElementById('result-text').textContent = '당신이 이겼습니다!'
         document.getElementById('container').style.filter = 'blur(5px)'
@@ -100,3 +112,24 @@ function decideWinner() {
         document.getElementById('result').style.display = 'flex'
     }
 }
+// 이겼어요, 비겼어요, 졌어요
+function showResult(result) {
+    if (result === 'win') {
+        versus.innerHTML = `<p class="bold">이겼어요</p>`
+    } else if (result === 'lose') {
+        versus.innerHTML = `<p class="bold">졌어요</p>`
+    } else {
+        versus.innerHTML = `<p class="bold">비겼어요</p>`
+    }
+    // if (window.matchMedia('(min-width: 1100px').matches) {
+    //     if (result === 'win') {
+    //         versus.innerHTML = `<p class="bold">이겼어요</p>`
+    //     } else if (result === 'lose') {
+    //         versus.innerHTML = `<p class="bold">졌어요</p>`
+    //     } else {
+    //         versus.innerHTML = `<p class="bold">비겼어요</p>`
+    //     }
+    // }
+}
+
+reset()
